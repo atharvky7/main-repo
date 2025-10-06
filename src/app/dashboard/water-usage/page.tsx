@@ -77,7 +77,7 @@ export default function WaterUsagePage() {
     <div className="p-8 bg-background flex-1 flex flex-col items-center">
       <div className="w-full max-w-6xl space-y-8">
         <h1 className="text-3xl font-bold font-headline tracking-tight">Water Usage Details</h1>
-        <Card className="shadow-lg rounded-lg" style={{backgroundColor: "hsl(220 90% 97%)"}}>
+        <Card className="shadow-lg rounded-lg" style={{backgroundColor: "hsl(220 90% 95%)"}}>
             <CardHeader>
                 <CardTitle>Factory Water Usage Data</CardTitle>
             </CardHeader>
