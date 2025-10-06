@@ -70,7 +70,7 @@ export default function EnergyConsumptionPage() {
     <div className="p-8 bg-background flex-1 flex flex-col items-center">
       <div className="w-full max-w-6xl">
         <h1 className="text-3xl font-bold font-headline tracking-tight mb-6">Energy Consumption Details</h1>
-        <Card className="shadow-lg rounded-lg" style={{backgroundColor: "hsl(45 90% 95%)"}}>
+        <Card className="shadow-lg rounded-lg" style={{backgroundColor: "hsl(45 90% 97%)"}}>
             <CardHeader>
                 <CardTitle>Factory Consumption Data</CardTitle>
             </CardHeader>
