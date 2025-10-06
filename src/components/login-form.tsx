@@ -139,25 +139,30 @@ export function LoginForm() {
               )}
             />
 
-            <FormField
-              control={form.control}
-              name="remember"
-              render={({ field }) => (
-                <FormItem className="flex flex-row items-center space-x-3 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <div className="space-y-1 leading-none">
-                    <FormLabel>
-                      Remember me
-                    </FormLabel>
-                  </div>
-                </FormItem>
-              )}
-            />
+            <div className="flex items-center justify-between">
+              <FormField
+                control={form.control}
+                name="remember"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel>
+                        Remember me
+                      </FormLabel>
+                    </div>
+                  </FormItem>
+                )}
+              />
+              <Link href="#" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                Forgot password?
+              </Link>
+            </div>
 
             <Button type="submit" className="w-full">
               Sign In
