@@ -5,7 +5,7 @@ import {
   Settings,
   HelpCircle,
   LifeBuoy,
-  MessageSquareQuestion,
+  MessageSquareQuote,
   LogOut,
   ChevronRight,
   ChevronLeft,
@@ -30,7 +30,7 @@ const menuItems = [
   { href: "/options", icon: Settings, label: "Options" },
   { href: "/help", icon: HelpCircle, label: "Help" },
   { href: "/support", icon: LifeBuoy, label: "Support" },
-  { href: "/faq", icon: MessageSquareQuestion, label: "FAQ" },
+  { href: "/faq", icon: MessageSquareQuote, label: "FAQ" },
 ]
 
 export default function DashboardLayout({
