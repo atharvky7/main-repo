@@ -64,9 +64,12 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="p-8 bg-background flex-1 flex flex-col items-center">
+    <div className="p-8 bg-background flex-1 flex flex-col items-center relative overflow-hidden">
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-1" />
+      <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-1" />
+
         <h2 className="text-4xl font-bold font-headline tracking-tight mb-8 mt-4">Sensor Parameters</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl z-10">
         {metrics.map((metric) => (
           <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-lg border-l-8 flex flex-col justify-center text-center p-6"
             style={{ 
