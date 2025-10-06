@@ -11,8 +11,8 @@ export default function DashboardPage() {
       change: "+2.1%",
       changeType: "increase" as "increase" | "decrease",
       icon: (
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100">
-          <Zap className="h-6 w-6 text-yellow-500" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 shadow-lg">
+          <Zap className="h-6 w-6 text-white" />
         </div>
       ),
       description: "Total energy used this month",
@@ -23,8 +23,8 @@ export default function DashboardPage() {
       change: "-0.5%",
       changeType: "decrease" as "increase" | "decrease",
       icon: (
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
-          <Factory className="h-6 w-6 text-gray-500" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-gray-400 to-gray-600 shadow-lg">
+          <Factory className="h-6 w-6 text-white" />
         </div>
       ),
       description: "Carbon footprint from operations",
@@ -35,8 +35,8 @@ export default function DashboardPage() {
       change: "+1.2%",
       changeType: "increase" as "increase" | "decrease",
       icon: (
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-          <Droplets className="h-6 w-6 text-blue-500" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 shadow-lg">
+          <Droplets className="h-6 w-6 text-white" />
         </div>
       ),
       description: "Total water consumption",
@@ -47,8 +47,8 @@ export default function DashboardPage() {
       change: "-3.0%",
       changeType: "decrease" as "increase" | "decrease",
       icon: (
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-          <Wind className="h-6 w-6 text-green-500" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-teal-500 shadow-lg">
+          <Wind className="h-6 w-6 text-white" />
         </div>
       ),
       description: "Air Quality Index (particulates)",
