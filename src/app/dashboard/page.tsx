@@ -40,8 +40,8 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="p-4 bg-muted/40 h-full flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-bold tracking-tight mb-4">Sensor Parameters</h2>
+    <div className="p-8 bg-muted/40 flex-1 flex flex-col items-center">
+        <h2 className="text-4xl font-bold font-headline tracking-tight mb-8 mt-4">Sensor Parameters</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
         {metrics.map((metric) => (
           <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg border-l-4 flex flex-col justify-center text-center p-4"
