@@ -16,6 +16,7 @@ export default function DashboardPage() {
         </div>
       ),
       description: "Total energy used this month",
+      cardColor: "hsl(45 90% 95%)"
     },
     {
       title: "CO2 Emissions",
@@ -28,6 +29,7 @@ export default function DashboardPage() {
         </div>
       ),
       description: "Carbon footprint from operations",
+      cardColor: "hsl(220 10% 95%)"
     },
     {
       title: "Water Usage",
@@ -40,6 +42,7 @@ export default function DashboardPage() {
         </div>
       ),
       description: "Total water consumption",
+      cardColor: "hsl(220 90% 95%)"
     },
     {
       title: "Air Pollution",
@@ -52,16 +55,20 @@ export default function DashboardPage() {
         </div>
       ),
       description: "Air Quality Index (particulates)",
+      cardColor: "hsl(150 70% 95%)"
     },
   ];
 
   return (
     <div className="p-8 bg-background flex-1 flex flex-col items-center">
         <h2 className="text-4xl font-bold font-headline tracking-tight mb-8 mt-4">Sensor Parameters</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl">
         {metrics.map((metric) => (
           <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-lg border-l-4 flex flex-col justify-center text-center p-4"
-            style={{ borderLeftColor: metric.changeType === 'decrease' && (metric.title === 'CO2 Emissions' || metric.title === 'Air Pollution') ? 'hsl(var(--primary))' : (metric.changeType === 'increase' ? 'hsl(var(--destructive))' : 'hsl(var(--primary))'), backgroundColor: 'hsl(var(--card))' }}>
+            style={{ 
+              borderLeftColor: metric.changeType === 'decrease' && (metric.title === 'CO2 Emissions' || metric.title === 'Air Pollution') ? 'hsl(var(--primary))' : (metric.changeType === 'increase' ? 'hsl(var(--destructive))' : 'hsl(var(--primary))'),
+              backgroundColor: metric.cardColor
+            }}>
             <CardHeader className="flex flex-col items-center justify-center space-y-2 pb-2">
               {metric.icon}
               <CardTitle className="text-lg font-medium">{metric.title}</CardTitle>
