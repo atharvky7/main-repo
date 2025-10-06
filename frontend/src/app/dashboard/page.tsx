@@ -1,6 +1,7 @@
 "use client"
 
 import { Zap, Factory, Droplets, Wind, ArrowUpRight, ArrowDownRight } from "lucide-react"
+import Link from "next/link"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function DashboardPage() {
@@ -17,7 +18,8 @@ export default function DashboardPage() {
       ),
       description: "Total energy used this month",
       cardColor: "hsl(45 90% 95%)",
-      borderColor: "hsl(38 92% 50%)"
+      borderColor: "hsl(38 92% 50%)",
+      href: "/dashboard/energy-consumption"
     },
     {
       title: "CO2 Emissions",
@@ -31,7 +33,8 @@ export default function DashboardPage() {
       ),
       description: "Carbon footprint from operations",
       cardColor: "hsl(220 10% 95%)",
-      borderColor: "hsl(220 5% 50%)"
+      borderColor: "hsl(220 5% 50%)",
+      href: "/dashboard/co2-emissions"
     },
     {
       title: "Water Usage",
@@ -45,7 +48,8 @@ export default function DashboardPage() {
       ),
       description: "Total water consumption",
       cardColor: "hsl(220 90% 95%)",
-      borderColor: "hsl(221 83% 53%)"
+      borderColor: "hsl(221 83% 53%)",
+      href: "/dashboard/water-usage"
     },
     {
       title: "Air Pollution",
@@ -59,9 +63,36 @@ export default function DashboardPage() {
       ),
       description: "Air Quality Index (particulates)",
       cardColor: "hsl(0 90% 95%)",
-      borderColor: "hsl(0 84% 60%)"
+      borderColor: "hsl(0 84% 60%)",
+      href: "/dashboard/air-pollution"
     },
   ];
+
+  const renderMetricCard = (metric: any) => (
+    <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-lg border-l-8 flex flex-col justify-center text-center p-6"
+      style={{ 
+        borderColor: metric.borderColor,
+        backgroundColor: metric.cardColor
+      }}>
+      <CardHeader className="flex flex-col items-center justify-center space-y-2 pb-2">
+        {metric.icon}
+        <CardTitle className="text-xl font-medium">{metric.title}</CardTitle>
+      </CardHeader>
+      <CardContent className="p-2">
+        <div className="text-4xl font-bold">{metric.value}</div>
+        <p className="text-xs text-muted-foreground pt-1">{metric.description}</p>
+      </CardContent>
+      <CardFooter className="flex items-center justify-center text-sm p-2">
+        {metric.changeType === 'increase' ? (
+          <ArrowUpRight className="h-4 w-4 text-destructive" />
+        ) : (
+          <ArrowDownRight className="h-4 w-4 text-primary" />
+        )}
+        <span className={`ml-1 ${metric.changeType === 'increase' ? 'text-destructive' : 'text-primary'}`}>{metric.change}</span>
+        <span className="ml-1 text-muted-foreground text-xs">from last month</span>
+      </CardFooter>
+    </Card>
+  );
 
   return (
     <div className="p-8 bg-background flex-1 flex flex-col items-center relative overflow-hidden">
@@ -81,31 +112,15 @@ export default function DashboardPage() {
 
         <h2 className="text-4xl font-bold font-headline tracking-tight mb-8 mt-4">SENSOR PARAMETERS</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl z-10">
-        {metrics.map((metric) => (
-          <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-lg border-l-8 flex flex-col justify-center text-center p-6"
-            style={{ 
-              borderColor: metric.borderColor,
-              backgroundColor: metric.cardColor
-            }}>
-            <CardHeader className="flex flex-col items-center justify-center space-y-2 pb-2">
-              {metric.icon}
-              <CardTitle className="text-xl font-medium">{metric.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="p-2">
-              <div className="text-4xl font-bold">{metric.value}</div>
-              <p className="text-xs text-muted-foreground pt-1">{metric.description}</p>
-            </CardContent>
-            <CardFooter className="flex items-center justify-center text-sm p-2">
-              {metric.changeType === 'increase' ? (
-                <ArrowUpRight className="h-4 w-4 text-destructive" />
-              ) : (
-                <ArrowDownRight className="h-4 w-4 text-primary" />
-              )}
-              <span className={`ml-1 ${metric.changeType === 'increase' ? 'text-destructive' : 'text-primary'}`}>{metric.change}</span>
-              <span className="ml-1 text-muted-foreground text-xs">from last month</span>
-            </CardFooter>
-          </Card>
-        ))}
+        {metrics.map((metric) =>
+            metric.href ? (
+              <Link href={metric.href} key={metric.title} className="block">
+                {renderMetricCard(metric)}
+              </Link>
+            ) : (
+              renderMetricCard(metric)
+            )
+          )}
       </div>
     </div>
   )
