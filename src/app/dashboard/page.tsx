@@ -63,7 +63,8 @@ export default function DashboardPage() {
       ),
       description: "Air Quality Index (particulates)",
       cardColor: "hsl(0 90% 95%)",
-      borderColor: "hsl(0 84% 60%)"
+      borderColor: "hsl(0 84% 60%)",
+      href: "/dashboard/air-pollution"
     },
   ];
 
