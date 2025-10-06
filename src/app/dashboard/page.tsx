@@ -33,7 +33,8 @@ export default function DashboardPage() {
       ),
       description: "Carbon footprint from operations",
       cardColor: "hsl(220 10% 95%)",
-      borderColor: "hsl(220 5% 50%)"
+      borderColor: "hsl(220 5% 50%)",
+      href: "/dashboard/co2-emissions"
     },
     {
       title: "Water Usage",
