@@ -83,7 +83,7 @@ export function LoginForm() {
   return (
     <Card className="w-full max-w-md shadow-2xl rounded-2xl">
       <CardHeader className="text-center p-6">
-        <CardTitle className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-fuchsia-500 text-transparent bg-clip-text">
+        <CardTitle className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-green-500 text-transparent bg-clip-text font-headline">
           SmartOps
         </CardTitle>
         <CardDescription className="pt-2">Sign in to your account. Use test@example.com and 'password'.</CardDescription>

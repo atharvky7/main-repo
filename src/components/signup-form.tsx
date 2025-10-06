@@ -37,7 +37,7 @@ const formSchema = z.object({
 });
 
 const PasswordRequirement = ({ isValid, text }: { isValid: boolean; text: string }) => (
-  <div className={cn("flex items-center gap-2 transition-colors", isValid ? "text-chart-2" : "text-muted-foreground")}>
+  <div className={cn("flex items-center gap-2 transition-colors", isValid ? "text-primary" : "text-muted-foreground")}>
     <CheckCircle2 className="h-4 w-4" />
     <p className="text-sm">{text}</p>
   </div>
@@ -80,7 +80,7 @@ export function SignUpForm() {
   return (
     <Card className="w-full max-w-md shadow-2xl rounded-2xl">
       <CardHeader className="text-center p-6">
-        <CardTitle className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-fuchsia-500 text-transparent bg-clip-text">
+        <CardTitle className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-green-500 text-transparent bg-clip-text font-headline">
           SmartOps
         </CardTitle>
         <CardDescription className="pt-2">Create your account to get started</CardDescription>

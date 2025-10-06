@@ -24,7 +24,7 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
-        <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-primary to-fuchsia-500 text-transparent bg-clip-text">
+        <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-green-500 to-green-600 text-transparent bg-clip-text font-headline">
           SmartOps
         </h1>
         <DropdownMenu>
