@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { LogOut, User } from "lucide-react"
@@ -24,9 +25,17 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
-        <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-green-500 to-green-600 text-transparent bg-clip-text font-headline">
-          SmartOps
-        </h1>
+        <div className="flex items-center gap-6">
+          <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-green-500 to-green-600 text-transparent bg-clip-text font-headline">
+            SmartOps
+          </h1>
+          <nav className="hidden md:flex items-center gap-4 text-sm font-medium text-muted-foreground">
+            <Link href="/dashboard" className="text-foreground transition-colors hover:text-foreground/80">Home</Link>
+            <Link href="/options" className="transition-colors hover:text-foreground/80">Options</Link>
+            <Link href="/support" className="transition-colors hover:text-foreground/80">Help Support</Link>
+            <Link href="/faq" className="transition-colors hover:text-foreground/80">FAQ</Link>
+          </nav>
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
