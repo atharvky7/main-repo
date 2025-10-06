@@ -68,7 +68,7 @@ export default function DashboardLayout({
           <SidebarMenu>
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.label}>
-                <SidebarMenuButton asChild tooltip={item.label} size="lg">
+                <SidebarMenuButton asChild tooltip={item.label} size="lg" className="text-base">
                   <Link href={item.href}>
                     <item.icon />
                     <span>{item.label}</span>
