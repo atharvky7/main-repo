@@ -72,7 +72,7 @@ export default function CO2EmissionsPage() {
     <div className="p-8 bg-background flex-1 flex flex-col items-center">
       <div className="w-full max-w-6xl">
         <h1 className="text-3xl font-bold font-headline tracking-tight mb-6">CO2 Emissions Details</h1>
-        <Card className="shadow-lg rounded-lg">
+        <Card className="shadow-lg rounded-lg" style={{backgroundColor: "hsl(220 10% 97%)"}}>
             <CardHeader>
                 <CardTitle>Factory CO2 Emissions Data</CardTitle>
             </CardHeader>
