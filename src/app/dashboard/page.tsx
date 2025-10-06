@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { LogOut, User, Zap, Factory, Droplets, Wind, ArrowUpRight, ArrowDownRight, Home, Settings, HelpCircle, Info, Leaf } from "lucide-react"
+import { LogOut, User, Zap, Factory, Droplets, Wind, ArrowUpRight, ArrowDownRight, Home, Settings, HelpCircle, Info, Leaf, LifeBuoy } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -93,9 +93,17 @@ export default function DashboardPage() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/support">
+                  <Link href="/help">
                     <HelpCircle />
-                    Help Support
+                    Help
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/support">
+                    <LifeBuoy />
+                    Support
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
