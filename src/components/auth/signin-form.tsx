@@ -26,51 +26,48 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { AlertTriangle, Loader2, User, Mail, Lock } from 'lucide-react';
+import { AlertTriangle, Loader2, Mail, Lock } from 'lucide-react';
 
-const formSchema = z
-  .object({
-    name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-    email: z.string().email({ message: 'Please enter a valid email.' }),
-    password: z
-      .string()
-      .min(6, { message: 'Password must be at least 6 characters.' }),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match.",
-    path: ['confirmPassword'],
-  });
+const formSchema = z.object({
+  email: z.string().email({ message: 'Please enter a valid email.' }),
+  password: z.string().min(1, { message: 'Password is required.' }),
+});
 
-type SignUpFormValues = z.infer<typeof formSchema>;
+type SignInFormValues = z.infer<typeof formSchema>;
 
-export function SignUpForm() {
+export function SignInForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { signUp } = useAuth();
+  const { signIn } = useAuth();
   const router = useRouter();
 
-  const form = useForm<SignUpFormValues>({
+  const form = useForm<SignInFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
       email: '',
       password: '',
-      confirmPassword: '',
     },
   });
 
-  const onSubmit = async (data: SignUpFormValues) => {
+  const onSubmit = async (data: SignInFormValues) => {
     setError(null);
     setLoading(true);
     try {
-      await signUp(data.email, data.password, data.name);
+      await signIn(data.email, data.password);
       router.push('/app');
     } catch (err: any) {
-      if (err.code === 'auth/email-already-in-use') {
-        setError('This email address is already in use.');
-      } else {
-        setError('An unexpected error occurred. Please try again.');
+      switch (err.code) {
+        case 'auth/user-not-found':
+        case 'auth/wrong-password':
+        case 'auth/invalid-credential':
+          setError('Invalid email or password.');
+          break;
+        case 'auth/invalid-email':
+          setError('Please enter a valid email address.');
+          break;
+        default:
+          setError('An unexpected error occurred. Please try again.');
+          break;
       }
     } finally {
       setLoading(false);
@@ -80,9 +77,9 @@ export function SignUpForm() {
   return (
     <Card className="w-full max-w-md shadow-lg">
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-bold">Create an account</CardTitle>
+        <CardTitle className="text-2xl font-bold">Sign In</CardTitle>
         <CardDescription>
-          Enter your information to create your AuthFlow account.
+          Welcome back! Sign in to your AuthFlow account.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -95,26 +92,6 @@ export function SignUpForm() {
         )}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <FormControl>
-                      <Input
-                        placeholder="John Doe"
-                        {...field}
-                        className="pl-10"
-                      />
-                    </FormControl>
-                  </div>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             <FormField
               control={form.control}
               name="email"
@@ -141,28 +118,13 @@ export function SignUpForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
-                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <FormControl>
-                      <Input
-                        type="password"
-                        placeholder="••••••••"
-                        {...field}
-                        className="pl-10"
-                      />
-                    </FormControl>
-                   </div>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="confirmPassword"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
+                    <div className="flex justify-between items-center">
+                        <FormLabel>Password</FormLabel>
+                        <Link href="/reset-password"
+                           className="text-sm text-primary hover:underline">
+                            Forgot password?
+                        </Link>
+                    </div>
                    <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <FormControl>
@@ -180,16 +142,16 @@ export function SignUpForm() {
             />
             <Button type="submit" className="w-full" disabled={loading}>
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Sign Up
+              Sign In
             </Button>
           </form>
         </Form>
       </CardContent>
       <CardFooter className="text-center text-sm">
         <p>
-          Already have an account?{' '}
-          <Link href="/signin" className="text-primary hover:underline">
-            Sign in
+          Don't have an account?{' '}
+          <Link href="/signup" className="text-primary hover:underline">
+            Sign up
           </Link>
         </p>
       </CardFooter>
