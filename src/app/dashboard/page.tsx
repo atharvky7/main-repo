@@ -66,6 +66,14 @@ export default function DashboardPage() {
   return (
     <div className="p-8 bg-background flex-1 flex flex-col items-center relative overflow-hidden">
       <div className="absolute inset-0 -z-10 overflow-hidden">
+        <svg className="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="leaf-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="scale(0.5) rotate(45)">
+              <path d="M40 0 C50 10 50 30 40 50 C30 70 30 90 40 100 C50 90 70 70 80 50 C70 30 70 10 40 0Z" fill="hsl(var(--primary)/0.04)"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#leaf-pattern)"/>
+        </svg>
         <div className="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4 w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 w-[40rem] h-[40rem] bg-green-500/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-blue-500/5 rounded-full blur-[100px]" />
