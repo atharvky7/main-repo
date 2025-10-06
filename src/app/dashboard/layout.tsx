@@ -55,12 +55,12 @@ export default function DashboardLayout({
           <SidebarMenu>
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.label}>
-                <Link href={item.href} legacyBehavior passHref>
-                  <SidebarMenuButton tooltip={item.label}>
+                <SidebarMenuButton asChild tooltip={item.label}>
+                  <Link href={item.href}>
                     <item.icon />
                     <span>{item.label}</span>
-                  </SidebarMenuButton>
-                </Link>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
@@ -68,12 +68,12 @@ export default function DashboardLayout({
         <SidebarFooter>
           <SidebarMenu>
             <SidebarMenuItem>
-              <Link href="/login" legacyBehavior passHref>
-                <SidebarMenuButton tooltip="Log Out">
+              <SidebarMenuButton asChild tooltip="Log Out">
+                <Link href="/login">
                   <LogOut />
                   <span>Log Out</span>
-                </SidebarMenuButton>
-              </Link>
+                </Link>
+              </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
