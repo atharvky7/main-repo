@@ -10,7 +10,11 @@ export default function DashboardPage() {
       value: "721 kWh",
       change: "+2.1%",
       changeType: "increase" as "increase" | "decrease",
-      icon: <Zap className="h-6 w-6 text-yellow-500" />,
+      icon: (
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100">
+          <Zap className="h-6 w-6 text-yellow-500" />
+        </div>
+      ),
       description: "Total energy used this month",
     },
     {
@@ -18,7 +22,11 @@ export default function DashboardPage() {
       value: "3.4 tons",
       change: "-0.5%",
       changeType: "decrease" as "increase" | "decrease",
-      icon: <Factory className="h-6 w-6 text-gray-500" />,
+      icon: (
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
+          <Factory className="h-6 w-6 text-gray-500" />
+        </div>
+      ),
       description: "Carbon footprint from operations",
     },
     {
@@ -26,7 +34,11 @@ export default function DashboardPage() {
       value: "1.2M L",
       change: "+1.2%",
       changeType: "increase" as "increase" | "decrease",
-      icon: <Droplets className="h-6 w-6 text-blue-500" />,
+      icon: (
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+          <Droplets className="h-6 w-6 text-blue-500" />
+        </div>
+      ),
       description: "Total water consumption",
     },
     {
@@ -34,7 +46,11 @@ export default function DashboardPage() {
       value: "42 AQI",
       change: "-3.0%",
       changeType: "decrease" as "increase" | "decrease",
-      icon: <Wind className="h-6 w-6 text-green-500" />,
+      icon: (
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+          <Wind className="h-6 w-6 text-green-500" />
+        </div>
+      ),
       description: "Air Quality Index (particulates)",
     },
   ];
