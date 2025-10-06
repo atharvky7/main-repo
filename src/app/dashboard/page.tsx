@@ -162,10 +162,10 @@ export default function DashboardPage() {
             </h1>
             <div>{/* This space can be used for other header items if needed */}</div>
           </header>
-          <main className="flex-1 p-4 sm:p-6 lg:p-8 bg-muted/40">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <main className="flex-1 flex flex-col p-4 sm:p-6 lg:p-8 bg-muted/40">
+            <div className="grid flex-1 gap-6 md:grid-cols-2">
               {metrics.map((metric) => (
-                <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg border-l-4"
+                <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg border-l-4 flex flex-col justify-center"
                   style={{ borderLeftColor: metric.changeType === 'decrease' && (metric.title === 'CO2 Emissions' || metric.title === 'Air Pollution') ? 'hsl(var(--primary))' : (metric.changeType === 'increase' ? 'hsl(var(--destructive))' : 'hsl(var(--primary))') }}>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">{metric.title}</CardTitle>
