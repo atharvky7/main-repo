@@ -48,7 +48,8 @@ export default function DashboardPage() {
       ),
       description: "Total water consumption",
       cardColor: "hsl(220 90% 95%)",
-      borderColor: "hsl(221 83% 53%)"
+      borderColor: "hsl(221 83% 53%)",
+      href: "/dashboard/water-usage"
     },
     {
       title: "Air Pollution",
