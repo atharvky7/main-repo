@@ -50,12 +50,12 @@ export default function DashboardPage() {
       change: "-3.0%",
       changeType: "decrease" as "increase" | "decrease",
       icon: (
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-teal-500 shadow-lg">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-lg">
           <Wind className="h-6 w-6 text-white" />
         </div>
       ),
       description: "Air Quality Index (particulates)",
-      cardColor: "hsl(150 70% 95%)"
+      cardColor: "hsl(0 90% 95%)"
     },
   ];
 
