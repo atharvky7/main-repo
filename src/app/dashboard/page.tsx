@@ -40,7 +40,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="grid min-h-screen grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-muted/40">
+    <div className="grid h-full grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-muted/40">
       {metrics.map((metric) => (
         <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg border-l-4 flex flex-col justify-center text-center"
           style={{ borderLeftColor: metric.changeType === 'decrease' && (metric.title === 'CO2 Emissions' || metric.title === 'Air Pollution') ? 'hsl(var(--primary))' : (metric.changeType === 'increase' ? 'hsl(var(--destructive))' : 'hsl(var(--primary))') }}>
