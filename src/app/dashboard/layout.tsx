@@ -33,7 +33,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-50">
+      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-primary px-4 md:px-6 z-50">
         <nav className="flex w-full flex-row items-center gap-5 text-sm font-medium lg:gap-6">
           <Link
             href="/dashboard"
@@ -49,13 +49,13 @@ export default function DashboardLayout({
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="size-6 text-primary"
+              className="size-6 text-primary-foreground"
             >
               <path d="M12 22c-4.42 0-8-3.58-8-8 0-4.42 3.58-8 8-8s8 3.58 8 8c0 4.42-3.58 8-8 8z" />
               <path d="M12 2a10 10 0 0 0-10 10c0 4.42 3.58 8 8 8" />
               <path d="M12 22a10 10 0 0 1 10-10c0-4.42-3.58-8-8-8" />
             </svg>
-            <h1 className="text-xl font-bold font-headline bg-gradient-to-r from-primary to-green-500 text-transparent bg-clip-text">
+            <h1 className="text-xl font-bold font-headline text-primary-foreground">
               SmartOps
             </h1>
             <span className="sr-only">SmartOps</span>
@@ -65,7 +65,7 @@ export default function DashboardLayout({
                <Link
                   key={item.label}
                   href={item.href}
-                  className="text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-primary-foreground/80 transition-colors hover:text-primary-foreground"
                 >
                   {item.label}
                 </Link>
@@ -76,7 +76,7 @@ export default function DashboardLayout({
             <div className="md:hidden">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="icon">
+                  <Button variant="ghost" size="icon" className="text-primary-foreground/80 hover:bg-white/20 hover:text-primary-foreground">
                     <Menu className="h-5 w-5" />
                     <span className="sr-only">Toggle navigation menu</span>
                   </Button>
@@ -92,7 +92,7 @@ export default function DashboardLayout({
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
-            <Button asChild variant="ghost" size="icon" className="rounded-full">
+            <Button asChild variant="ghost" size="icon" className="rounded-full text-primary-foreground/80 hover:bg-white/20 hover:text-primary-foreground">
               <Link href="/login">
                 <LogOut className="h-5 w-5" />
                 <span className="sr-only">Log Out</span>
