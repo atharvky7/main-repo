@@ -2,11 +2,13 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Eye, EyeOff, Lock, Mail } from "lucide-react"
 
+import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -34,6 +36,8 @@ const formSchema = z.object({
 
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,10 +49,26 @@ export function LoginForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    // Here you would handle the form submission, e.g., call an API
-    alert("Check the console for form data. Sign in successful (simulation)!")
-    form.reset();
+    // Dummy user data
+    const DUMMY_EMAIL = "test@example.com";
+    const DUMMY_PASSWORD = "password";
+
+    if (values.email === DUMMY_EMAIL && values.password === DUMMY_PASSWORD) {
+      toast({
+        title: "Sign in successful!",
+        description: "Redirecting you to the dashboard.",
+      });
+      router.push("/dashboard");
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Invalid credentials",
+        description: "Please check your email and password.",
+      })
+      form.setError("root", { message: "Invalid credentials" });
+      form.setError("email", { message: " " });
+      form.setError("password", { message: " " });
+    }
   }
   
   return (
@@ -57,7 +77,7 @@ export function LoginForm() {
         <CardTitle className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-fuchsia-500 text-transparent bg-clip-text">
           SmartOps
         </CardTitle>
-        <CardDescription className="pt-2">Sign in to your account</CardDescription>
+        <CardDescription className="pt-2">Sign in to your account. Use test@example.com and 'password'.</CardDescription>
       </CardHeader>
       <CardContent className="p-6">
         <Form {...form}>
