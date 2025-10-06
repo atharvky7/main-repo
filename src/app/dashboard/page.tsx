@@ -40,29 +40,31 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="grid h-full grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-muted/40">
-      {metrics.map((metric) => (
-        <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg border-l-4 flex flex-col justify-center text-center p-4"
-          style={{ borderLeftColor: metric.changeType === 'decrease' && (metric.title === 'CO2 Emissions' || metric.title === 'Air Pollution') ? 'hsl(var(--primary))' : (metric.changeType === 'increase' ? 'hsl(var(--destructive))' : 'hsl(var(--primary))') }}>
-          <CardHeader className="flex flex-col items-center justify-center space-y-2 pb-2">
-            {metric.icon}
-            <CardTitle className="text-lg font-medium">{metric.title}</CardTitle>
-          </CardHeader>
-          <CardContent className="p-2">
-            <div className="text-4xl font-bold">{metric.value}</div>
-            <p className="text-xs text-muted-foreground pt-1">{metric.description}</p>
-          </CardContent>
-          <CardFooter className="flex items-center justify-center text-sm p-2">
-            {metric.changeType === 'increase' ? (
-              <ArrowUpRight className="h-4 w-4 text-destructive" />
-            ) : (
-              <ArrowDownRight className="h-4 w-4 text-primary" />
-            )}
-            <span className={`ml-1 ${metric.changeType === 'increase' ? 'text-destructive' : 'text-primary'}`}>{metric.change}</span>
-            <span className="ml-1 text-muted-foreground text-xs">from last month</span>
-          </CardFooter>
-        </Card>
-      ))}
+    <div className="p-4 bg-muted/40 h-full flex items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+        {metrics.map((metric) => (
+          <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg border-l-4 flex flex-col justify-center text-center p-4"
+            style={{ borderLeftColor: metric.changeType === 'decrease' && (metric.title === 'CO2 Emissions' || metric.title === 'Air Pollution') ? 'hsl(var(--primary))' : (metric.changeType === 'increase' ? 'hsl(var(--destructive))' : 'hsl(var(--primary))') }}>
+            <CardHeader className="flex flex-col items-center justify-center space-y-2 pb-2">
+              {metric.icon}
+              <CardTitle className="text-lg font-medium">{metric.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="p-2">
+              <div className="text-4xl font-bold">{metric.value}</div>
+              <p className="text-xs text-muted-foreground pt-1">{metric.description}</p>
+            </CardContent>
+            <CardFooter className="flex items-center justify-center text-sm p-2">
+              {metric.changeType === 'increase' ? (
+                <ArrowUpRight className="h-4 w-4 text-destructive" />
+              ) : (
+                <ArrowDownRight className="h-4 w-4 text-primary" />
+              )}
+              <span className={`ml-1 ${metric.changeType === 'increase' ? 'text-destructive' : 'text-primary'}`}>{metric.change}</span>
+              <span className="ml-1 text-muted-foreground text-xs">from last month</span>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
     </div>
   )
 }
