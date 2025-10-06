@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/dashboard/air-pollution/page": "app/dashboard/air-pollution/page.js",
+  "/dashboard/co2-emissions/page": "app/dashboard/co2-emissions/page.js",
+  "/dashboard/energy-consumption/page": "app/dashboard/energy-consumption/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/water-usage/page": "app/dashboard/water-usage/page.js",
+  "/help/page": "app/help/page.js",
+  "/login/page": "app/login/page.js",
+  "/options/page": "app/options/page.js",
+  "/page": "app/page.js"
+}
