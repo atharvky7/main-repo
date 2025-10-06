@@ -1,3 +1,4 @@
+
 import {
   Table,
   TableHeader,
@@ -8,6 +9,8 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AlertCircle } from "lucide-react"
 
 const waterData = [
   {
@@ -68,10 +71,12 @@ export default function WaterUsagePage() {
     }
   }
 
+  const criticalFactories = waterData.filter(item => item.status === "Critical");
+
   return (
     <div className="p-8 bg-background flex-1 flex flex-col items-center">
-      <div className="w-full max-w-6xl">
-        <h1 className="text-3xl font-bold font-headline tracking-tight mb-6">Water Usage Details</h1>
+      <div className="w-full max-w-6xl space-y-8">
+        <h1 className="text-3xl font-bold font-headline tracking-tight">Water Usage Details</h1>
         <Card className="shadow-lg rounded-lg" style={{backgroundColor: "hsl(220 90% 97%)"}}>
             <CardHeader>
                 <CardTitle>Factory Water Usage Data</CardTitle>
@@ -105,6 +110,42 @@ export default function WaterUsagePage() {
             </Table>
           </CardContent>
         </Card>
+
+        {criticalFactories.length > 0 && (
+          <Alert variant="destructive" className="shadow-lg rounded-lg">
+             <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Immediate Attention Required!</AlertTitle>
+            <AlertDescription>
+              The following factories have critical water usage levels and require immediate action.
+            </AlertDescription>
+            <Card className="mt-4 bg-transparent border-0 shadow-none">
+              <CardContent className="p-0">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Factory</TableHead>
+                      <TableHead>Location</TableHead>
+                      <TableHead className="text-right">Usage (Liters)</TableHead>
+                      <TableHead className="text-center">Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {criticalFactories.map((item) => (
+                      <TableRow key={item.factory}>
+                        <TableCell className="font-medium">{item.factory}</TableCell>
+                        <TableCell>{item.location}</TableCell>
+                        <TableCell className="text-right">{item.usage.toLocaleString()}</TableCell>
+                        <TableCell className="text-center">
+                          <Badge variant={getStatusVariant(item.status)}>{item.status}</Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+          </Alert>
+        )}
       </div>
     </div>
   )
