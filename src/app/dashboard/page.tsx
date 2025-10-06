@@ -79,7 +79,7 @@ export default function DashboardPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-blue-500/5 rounded-full blur-[100px]" />
       </div>
 
-        <h2 className="text-4xl font-bold font-headline tracking-tight mb-8 mt-4">Sensor Parameters</h2>
+        <h2 className="text-4xl font-bold font-headline tracking-tight mb-8 mt-4">SENSOR PARAMETERS</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl z-10">
         {metrics.map((metric) => (
           <Card key={metric.title} className="shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-lg border-l-8 flex flex-col justify-center text-center p-6"
