@@ -68,7 +68,7 @@ export default function DashboardLayout({
         <SidebarFooter>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip="Log Out">
+              <SidebarMenuButton asChild tooltip="Log Out" size="lg">
                 <Link href="/login">
                   <LogOut />
                   <span>Log Out</span>
