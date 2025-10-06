@@ -43,9 +43,22 @@ export default function DashboardLayout({
       <Sidebar>
         <SidebarHeader>
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-primary">
-              <LayoutGrid className="size-5 text-primary-foreground" />
-            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-6 text-sidebar-primary"
+            >
+              <path d="M12 22c-4.42 0-8-3.58-8-8 0-4.42 3.58-8 8-8s8 3.58 8 8c0 4.42-3.58 8-8 8z" />
+              <path d="M12 2a10 10 0 0 0-10 10c0 4.42 3.58 8 8 8" />
+              <path d="M12 22a10 10 0 0 1 10-10c0-4.42-3.58-8-8-8" />
+            </svg>
             <h1 className="text-xl font-bold font-headline bg-gradient-to-r from-primary to-green-500 text-transparent bg-clip-text">
               SmartOps
             </h1>
