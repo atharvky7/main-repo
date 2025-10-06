@@ -79,6 +79,14 @@ export function LoginForm() {
       form.setError("password", { message: " " });
     }
   }
+
+  function handleDummyLogin() {
+    toast({
+      title: "Sign in successful!",
+      description: "Redirecting you to the dashboard.",
+    });
+    router.push("/dashboard");
+  }
   
   return (
     <Card className="w-full max-w-md shadow-2xl rounded-2xl">
@@ -164,9 +172,14 @@ export function LoginForm() {
               </Link>
             </div>
 
-            <Button type="submit" className="w-full">
-              Sign In
-            </Button>
+            <div className="space-y-2">
+              <Button type="submit" className="w-full">
+                Sign In
+              </Button>
+              <Button type="button" variant="secondary" className="w-full" onClick={handleDummyLogin}>
+                Dummy Login (Dev)
+              </Button>
+            </div>
           </form>
         </Form>
       </CardContent>
